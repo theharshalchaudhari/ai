@@ -9,7 +9,7 @@
             width: 100%;
             height: 100%;
             background: #000000;
-            color: #CFCFCF;
+            color: #8e8a8a;
             font-family: Consolas, monospace;
             overflow: auto;
             overflow-x: hidden;
@@ -33,7 +33,7 @@
             white-space: pre-wrap;
             font-size: 15px;
             line-height: 1.6;
-            color: #5a5a5a;
+            color: #6e6e6e;
             background: #000000;
             box-sizing: border-box;
         }
@@ -67,15 +67,15 @@
 
 Use Shift + Number:
 
-Shift + 1 → AiCodes.txt  
-Shift + 2 → exp1-peas.txt  
-Shift + 3 → exp2-uninformed-search.txt  
-Shift + 4 → exp3-informed-A-Star-search.txt  
-Shift + 5 → exp4-weka.txt  
-Shift + 6 → exp5-family-tree.txt  
-Shift + 7 → exp6-8queen-puzzle.txt  
-Shift + 8 → exp7-monkey-banana.txt  
-Shift + 9 → exp8-ieee.txt
+Shift + 1 → exp1-peas.txt  
+Shift + 2 → exp2-uninformed-search.txt  
+Shift + 3 → exp3-informed-A-Star-search.txt  
+Shift + 4 → exp4-weka.txt  
+Shift + 5 → exp5-family-tree.txt  
+Shift + 6 → exp6-8queen-puzzle.txt  
+Shift + 7 → exp7-monkey-banana.txt  
+Shift + 8 → exp8-ieee.txt  
+Shift + 0 → AiCodes.txt
 
     </div>
 
@@ -89,16 +89,18 @@ Shift + 9 → exp8-ieee.txt
             editor.classList.toggle("hiddenText");
         }
 
+        /* Updated key mapping */
+
         const files = {
-            "!": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt",
-            "@": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp1-peas.txt",
-            "#": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp2-uninformed-search.txt",
-            "$": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp3-informed-A-Star-search.txt",
-            "%": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp4-weka.txt",
-            "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp5-family-tree.txt",
-            "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
-            "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
-            "(": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt"
+            "!": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp1-peas.txt",
+            "@": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp2-uninformed-search.txt",
+            "#": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp3-informed-A-Star-search.txt",
+            "$": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp4-weka.txt",
+            "%": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp5-family-tree.txt",
+            "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
+            "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
+            "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt",
+            ")": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt"
         };
 
         document.addEventListener("keydown", function(event) {
