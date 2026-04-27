@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Black Screen Code View</title>
+
     <style>
         html, body {
             margin: 0;
@@ -37,6 +38,7 @@
             box-sizing: border-box;
         }
 
+        /* Right-side invisible click zone */
         #rightZone {
             position: fixed;
             top: 0;
@@ -61,8 +63,8 @@
     spellcheck="false"
     autocorrect="off"
     autocapitalize="off"
-    autocomplete="off">
-
+    autocomplete="off"
+>
 Use Shift + Number:
 
 Shift + 1 → exp1-peas.txt
@@ -75,32 +77,30 @@ Shift + 7 → exp7-monkey-banana.txt
 Shift + 8 → exp8-ieee.txt
 Shift + 9 → AI Chat Mode
 Shift + 0 → AiCodes.txt
-
 </div>
 
 <div id="rightZone" onclick="toggleTextColor()"></div>
 
 <script>
 const editor = document.getElementById("editor");
-editor.setAttribute("spellcheck", "false");
-
 let aiMode = false;
 
 /*
-IMPORTANT:
-
-In :contentReference[oaicite:0]{index=0}
+IN VERCEL:
 
 Project Settings → Environment Variables
 
 Create:
 
-NEXT_PUBLIC_OPENROUTER_API_KEY=your_real_key_here
+NEXT_PUBLIC_OPENROUTER_API_KEY=your_real_openrouter_key
 
-Then REDEPLOY
+Then redeploy.
+
+For plain HTML static project,
+replace API_KEY manually below.
 */
 
-const API_KEY = "YOUR_NEXT_PUBLIC_OPENROUTER_API_KEY";
+const API_KEY = "YOUR_REAL_OPENROUTER_API_KEY";
 
 function toggleTextColor() {
     editor.classList.toggle("hiddenText");
@@ -115,6 +115,7 @@ const files = {
     "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
     "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
     "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt",
+    "(": "AI_MODE",
     ")": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt"
 };
 
@@ -184,8 +185,11 @@ async function askAI(prompt) {
 document.addEventListener("keydown", function(event) {
     const key = event.key;
 
-    /* Shift + 9 → AI Chat Mode */
-    if (event.shiftKey && key === "9") {
+    /*
+    SHIFT + 9 → "(" → AI Mode
+    Works across browsers
+    */
+    if (key === "(" || (event.shiftKey && key === "9")) {
         event.preventDefault();
 
         aiMode = true;
@@ -202,7 +206,9 @@ Type your question below and press Enter
         return;
     }
 
-    /* Enter sends AI prompt only in AI mode */
+    /*
+    ENTER → Send AI prompt
+    */
     if (key === "Enter" && aiMode) {
         event.preventDefault();
 
@@ -218,8 +224,10 @@ Type your question below and press Enter
         return;
     }
 
-    /* Normal file loading */
-    if (files[key]) {
+    /*
+    Normal file loading
+    */
+    if (files[key] && files[key] !== "AI_MODE") {
         aiMode = false;
 
         fetch(files[key])
