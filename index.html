@@ -57,13 +57,13 @@
 </head>
 <body>
 
-    <div
-        id="editor"
-        contenteditable="true"
-        spellcheck="false"
-        autocorrect="off"
-        autocapitalize="off"
-        autocomplete="off">
+<div
+    id="editor"
+    contenteditable="true"
+    spellcheck="false"
+    autocorrect="off"
+    autocapitalize="off"
+    autocomplete="off">
 
 Use Shift + Number:
 
@@ -75,50 +75,128 @@ Shift + 5 → exp5-family-tree.txt
 Shift + 6 → exp6-8queen-puzzle.txt  
 Shift + 7 → exp7-monkey-banana.txt  
 Shift + 8 → exp8-ieee.txt  
+Shift + 9 → AI Chat Mode  
 Shift + 0 → AiCodes.txt
 
-    </div>
+</div>
 
-    <div id="rightZone" onclick="toggleTextColor()"></div>
+<div id="rightZone" onclick="toggleTextColor()"></div>
 
-    <script>
-        const editor = document.getElementById("editor");
-        editor.setAttribute("spellcheck", "false");
+<script>
+    const editor = document.getElementById("editor");
+    editor.setAttribute("spellcheck", "false");
 
-        function toggleTextColor() {
-            editor.classList.toggle("hiddenText");
+    let aiMode = false;
+
+    function toggleTextColor() {
+        editor.classList.toggle("hiddenText");
+    }
+
+    const files = {
+        "!": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp1-peas.txt",
+        "@": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp2-uninformed-search.txt",
+        "#": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp3-informed-A-Star-search.txt",
+        "$": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp4-weka.txt",
+        "%": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp5-family-tree.txt",
+        "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
+        "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
+        "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt",
+        ")": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt"
+    };
+
+    async function askAI(prompt) {
+        try {
+            editor.innerText = "Thinking...";
+
+            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer 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",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": window.location.href,
+                    "X-Title": "Black Screen AI View"
+                },
+                body: JSON.stringify({
+                    model: "openai/gpt-4o-mini",
+                    messages: [
+                        {
+                            role: "user",
+                            content: prompt
+                        }
+                    ]
+                })
+            });
+
+            const data = await response.json();
+
+            if (
+                data.choices &&
+                data.choices[0] &&
+                data.choices[0].message
+            ) {
+                editor.innerText = data.choices[0].message.content;
+            } else {
+                editor.innerText = "No response received.";
+            }
+
+        } catch (error) {
+            editor.innerText = "Error connecting to AI.";
+            console.error(error);
+        }
+    }
+
+    document.addEventListener("keydown", function(event) {
+        const key = event.key;
+
+        /* Shift + 9 = (  → AI Chat Mode */
+        if (key === "(") {
+            aiMode = true;
+
+            editor.innerText =
+`AI Chat Mode
+
+Type your question below and press Enter
+
+Example:
+Explain A* Search`;
+
+            window.scrollTo(0, 0);
+            return;
         }
 
-        /* Updated key mapping */
+        /* Enter sends AI prompt only in AI mode */
+        if (key === "Enter" && aiMode) {
+            event.preventDefault();
 
-        const files = {
-            "!": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp1-peas.txt",
-            "@": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp2-uninformed-search.txt",
-            "#": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp3-informed-A-Star-search.txt",
-            "$": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp4-weka.txt",
-            "%": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp5-family-tree.txt",
-            "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
-            "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
-            "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt",
-            ")": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt"
-        };
+            const prompt = editor.innerText
+                .replace("AI Chat Mode", "")
+                .replace("Type your question below and press Enter", "")
+                .replace("Example:\nExplain A* Search", "")
+                .trim();
 
-        document.addEventListener("keydown", function(event) {
-            const key = event.key;
-
-            if (files[key]) {
-                fetch(files[key])
-                    .then(response => response.text())
-                    .then(text => {
-                        editor.innerText = text;
-                        window.scrollTo(0, 0);
-                    })
-                    .catch(() => {
-                        editor.innerText = "Failed to load file.";
-                    });
+            if (prompt.length > 0) {
+                askAI(prompt);
             }
-        });
-    </script>
+
+            return;
+        }
+
+        /* Normal file loading */
+        if (files[key]) {
+            aiMode = false;
+
+            fetch(files[key])
+                .then(response => response.text())
+                .then(text => {
+                    editor.innerText = text;
+                    window.scrollTo(0, 0);
+                })
+                .catch(() => {
+                    editor.innerText = "Failed to load file.";
+                });
+        }
+    });
+</script>
 
 </body>
 </html>
