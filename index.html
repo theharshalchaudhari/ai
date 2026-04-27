@@ -33,11 +33,12 @@
             white-space: pre-wrap;
             font-size: 15px;
             line-height: 1.6;
-            color: #585858;
+            color: #5a5a5a;
             background: #000000;
             box-sizing: border-box;
         }
 
+        /* Right 30% click zone → toggles text color */
         #rightZone {
             position: fixed;
             top: 0;
@@ -49,23 +50,21 @@
             cursor: pointer;
         }
 
-        #blackCover {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 30%;
-            height: 100%;
-            background: #000000;
-            z-index: 2;
-            display: none;
+        .hiddenText {
+            color: #000000 !important;
         }
     </style>
 </head>
 <body>
 
-    <div id="blackCover"></div>
+    <div
+        id="editor"
+        contenteditable="true"
+        spellcheck="false"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="off">
 
-    <div id="editor" contenteditable="true">
 Use Shift + Number:
 
 Shift + 1 → AiCodes.txt  
@@ -77,19 +76,17 @@ Shift + 6 → exp5-family-tree.txt
 Shift + 7 → exp6-8queen-puzzle.txt  
 Shift + 8 → exp7-monkey-banana.txt  
 Shift + 9 → exp8-ieee.txt
+
     </div>
 
-    <div id="rightZone" onclick="toggleCover()"></div>
+    <div id="rightZone" onclick="toggleTextColor()"></div>
 
     <script>
-        function toggleCover() {
-            const cover = document.getElementById("blackCover");
+        const editor = document.getElementById("editor");
+        editor.setAttribute("spellcheck", "false");
 
-            if (cover.style.display === "none" || cover.style.display === "") {
-                cover.style.display = "block";
-            } else {
-                cover.style.display = "none";
-            }
+        function toggleTextColor() {
+            editor.classList.toggle("hiddenText");
         }
 
         const files = {
@@ -111,11 +108,11 @@ Shift + 9 → exp8-ieee.txt
                 fetch(files[key])
                     .then(response => response.text())
                     .then(text => {
-                        document.getElementById("editor").innerText = text;
+                        editor.innerText = text;
                         window.scrollTo(0, 0);
                     })
                     .catch(() => {
-                        document.getElementById("editor").innerText = "Failed to load file.";
+                        editor.innerText = "Failed to load file.";
                     });
             }
         });
