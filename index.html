@@ -38,7 +38,6 @@
             box-sizing: border-box;
         }
 
-        /* Right-side invisible click zone */
         #rightZone {
             position: fixed;
             top: 0;
@@ -86,21 +85,12 @@ const editor = document.getElementById("editor");
 let aiMode = false;
 
 /*
-IN VERCEL:
-
-Project Settings → Environment Variables
-
-Create:
-
-NEXT_PUBLIC_OPENROUTER_API_KEY=your_real_openrouter_key
-
-Then redeploy.
-
-For plain HTML static project,
-replace API_KEY manually below.
+PASTE YOUR REAL OPENROUTER KEY HERE
+Example:
+const API_KEY = "sk-or-v1-xxxxxxxxxxxxxxxx";
 */
 
-const API_KEY = "YOUR_REAL_OPENROUTER_API_KEY";
+const API_KEY = "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";
 
 function toggleTextColor() {
     editor.classList.toggle("hiddenText");
@@ -115,7 +105,6 @@ const files = {
     "^": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp6-8queen-puzzle.txt",
     "&": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp7-monkey-banana.txt",
     "*": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/exp8-ieee.txt",
-    "(": "AI_MODE",
     ")": "https://raw.githubusercontent.com/theharshalchaudhari/ai/main/AiCodes.txt"
 };
 
@@ -185,10 +174,7 @@ async function askAI(prompt) {
 document.addEventListener("keydown", function(event) {
     const key = event.key;
 
-    /*
-    SHIFT + 9 → "(" → AI Mode
-    Works across browsers
-    */
+    /* SHIFT + 9 → AI Mode */
     if (key === "(" || (event.shiftKey && key === "9")) {
         event.preventDefault();
 
@@ -206,9 +192,7 @@ Type your question below and press Enter
         return;
     }
 
-    /*
-    ENTER → Send AI prompt
-    */
+    /* ENTER → Send AI Prompt */
     if (key === "Enter" && aiMode) {
         event.preventDefault();
 
@@ -224,10 +208,8 @@ Type your question below and press Enter
         return;
     }
 
-    /*
-    Normal file loading
-    */
-    if (files[key] && files[key] !== "AI_MODE") {
+    /* Normal File Loading */
+    if (files[key]) {
         aiMode = false;
 
         fetch(files[key])
