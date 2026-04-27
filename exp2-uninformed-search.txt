@@ -177,3 +177,57 @@ path, cost = lowest_cost_first_search(graph, start, goal)
 
 print("Lowest Cost Path:", path)
 print("Total Cost:", cost)
+
+
+Explanation
+
+DFS, BFS, and Lowest Cost First Search are important search algorithms used in Artificial Intelligence for problem solving and path finding. DFS (Depth First Search) explores nodes deeply along one branch before backtracking, making it useful when the solution may be far from the root. BFS (Breadth First Search) explores all neighboring nodes level by level and is useful for finding the shortest path in an unweighted graph. Lowest Cost First Search selects the path with the minimum cumulative cost and is mainly used in weighted graphs where different paths have different costs. In this experiment, we implemented these search algorithms using Python and observed how each algorithm finds the path from the start node to the goal node. This practical helped in understanding graph traversal techniques and the working of uninformed search strategies in AI.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -91,3 +91,55 @@ print(f"Is Joe the grandparent of Anne? {is_gp}")
 
 is_gp_2 = is_grandparent("hazel", "ralph")
 print(f"Is Hazel the grandparent of Ralph? {is_gp_2}")
+
+
+Explanation
+
+In this experiment, we implemented a simple rule-based expert system using Python to represent family relationships. We created facts in the form of parent-child relationships and used functions to define rules such as finding parents, finding children, and checking grandparent relationships. The get_parents() function identifies the parents of a given person, the get_children() function finds the children of a specific parent, and the is_grandparent() function checks whether a person is the grandparent of another by applying logical rules. This practical helped in understanding knowledge representation using facts and rules, which is an important concept in Artificial Intelligence and expert systems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

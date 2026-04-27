@@ -139,3 +139,56 @@ Deterministic: Stochastic
 Episodic: Sequential
 Static: Dynamic
 Discrete: Discrete
+
+
+
+
+
+
+
+
+Explanation
+
+PEAS stands for Performance Measure, Environment, Actuators, and Sensors, and it is used in Artificial Intelligence to describe the task environment of an intelligent agent. Performance Measure defines the success of the agent, Environment represents the surroundings in which it works, Actuators are used to perform actions, and Sensors are used to collect information from the environment. In this experiment, we studied the PEAS description of different intelligent agents such as Autonomous Taxi, Medical Diagnosis System, Online Shopping Recommendation System, Smart Vacuum Cleaner, and Stock Trading Agent. We also analyzed their task environments based on properties like observability, determinism, number of agents, sequential or episodic nature, dynamic or static environment, and discrete or continuous behavior. This practical helped us understand how intelligent agents are designed and how they function efficiently in real-world applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

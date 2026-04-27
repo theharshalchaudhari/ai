@@ -1,0 +1,182 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Title: Artificial Intelligence in Automobiles using Expert System
+
+Aim:
+
+To study how Artificial Intelligence and Expert Systems are used in automobiles to improve vehicle performance, safety, and maintenance using a real-life example.
+
+Introduction:
+
+Artificial Intelligence is now used in many vehicles that we use daily such as cars, bikes, buses, and even delivery vehicles. A common real-life example is a car service warning system. When the engine gets overheated, fuel level becomes low, tyre pressure drops, or battery health becomes weak, the vehicle gives an alert to the driver.
+
+This works using an Expert System. An Expert System is a type of AI that makes decisions like a human expert. It uses stored knowledge and rules to identify problems and suggest solutions.
+
+For example:
+
+If engine temperature is high, then check cooling system.
+
+If tyre pressure is low, then refill air.
+
+If engine oil is low, then schedule servicing.
+
+This helps the driver take quick action and prevents major damage.
+
+Expert System:
+
+An Expert System mainly has two important parts:
+
+1. Knowledge Base – It stores facts, conditions, and rules.
+
+2. Inference Engine – It checks the rules and gives the correct decision or output.
+
+It also includes a User Interface through which the driver receives warnings and messages.
+
+Proposed Methodology:
+
+1. Study existing research papers on AI in automobiles.
+
+2. Identify important areas such as engine monitoring, braking system, battery health, tyre pressure, and vehicle safety.
+
+3. Collect vehicle sensor data like temperature, fuel level, brake condition, and service records.
+
+4. Use a hybrid approach by combining rule-based systems and machine learning.
+
+5. Design the expert system architecture.
+
+6. Test the system for different vehicle conditions.
+
+7. Evaluate system performance based on accuracy, speed, and reliability.
+
+8. Improve the system for better real-time decision making.
+
+Advantages:
+
+1. Improves vehicle safety
+
+2. Gives early warning before failure
+
+3. Reduces maintenance cost
+
+4. Supports real-time decision making
+
+5. Increases vehicle life
+
+6. Helps in smooth and efficient driving
+
+Disadvantages:
+
+1. System design is complex
+
+2. Development cost is high
+
+3. Requires expert knowledge
+
+4. Sometimes wrong sensor data can affect results
+
+5. Difficult to handle every possible real-world situation
+
+Conclusion:
+
+Expert Systems play an important role in modern automobiles. Daily-use features like service alerts, engine warnings, tyre pressure monitoring, and battery checking are good examples of AI in real life. By using a hybrid approach of rule-based reasoning and machine learning, vehicles become smarter, safer, and more reliable. This also supports the future development of intelligent and autonomous vehicles.
+
+
+Explanation
+
+In this experiment, we studied the application of Artificial Intelligence in automobiles using Expert Systems. An Expert System is an AI-based system that makes decisions like a human expert by using a knowledge base and an inference engine. We understood how vehicles use AI for engine monitoring, tyre pressure checking, battery health detection, fuel level monitoring, and service alerts. The system works by collecting sensor data and applying predefined rules such as detecting engine overheating, low tyre pressure, or low engine oil and then suggesting the required action. We also studied the advantages, disadvantages, and working methodology of implementing expert systems in automobiles. This practical helped in understanding the real-life use of AI in improving vehicle safety, performance, maintenance, and decision making in modern vehicles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

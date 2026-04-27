@@ -1,0 +1,191 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COMPLETE WEKA STEP-BY-STEP
+
+STEP 1: Open WEKA
+
+* Open WEKA
+* Click Explorer
+
+⸻
+
+STEP 2: Load Dataset
+
+* Go to Preprocess tab
+* Click Open file
+* Select dataset: weather.nominal.arff (recommended for practice)
+
+⸻
+
+STEP 3: Understand Dataset
+
+* Left panel → Attributes list
+* Bottom → Class attribute (target variable)
+
+Ensure:
+
+* Class is set to the last attribute
+* If not → select it manually from dropdown
+
+⸻
+
+STEP 4: Attribute Selection
+
+Go to Select Attributes tab
+
+Method 1: CFS Evaluator
+
+* Attribute Evaluator → CfsSubsetEval
+* Search Method → BestFirst
+* Click Start
+* Note selected attributes
+
+⸻
+
+Method 2: Chi-Square
+
+* Attribute Evaluator → ChiSquaredAttributeEval
+* Search Method → Ranker
+* Click Start
+* Note attribute ranking
+
+⸻
+
+Method 3: Wrapper Method
+
+* Attribute Evaluator → WrapperSubsetEval
+* Search Method → BestFirst
+* Click Start
+* Note best subset
+
+⸻
+
+STEP 5: Classification
+
+Go to Classify tab
+
+Choose Algorithm
+
+* Click Choose
+* Select → trees → J48 (decision tree)
+
+Set Test Option
+
+* Select Cross-validation
+* Set 10 folds
+
+Run
+
+* Click Start
+
+⸻
+
+STEP 6: Understand Output
+
+Observe the following:
+
+* Accuracy (%) → overall correctness
+* Precision → correctness of positive predictions
+* Recall → ability to find all positives
+* F-Measure → balance of precision & recall
+* Confusion Matrix → correct vs incorrect predictions
+
+
+Explanation
+
+In this experiment, we performed attribute selection and classification using the WEKA tool. First, we loaded the dataset file such as weather.nominal.arff in the Explorer interface under the Preprocess tab and observed the attributes and class label. Then, in the Select Attributes tab, we applied different attribute selection methods such as CfsSubsetEval with BestFirst, ChiSquaredAttributeEval with Ranker, and WrapperSubsetEval with BestFirst to identify the most relevant attributes for prediction. After that, in the Classify tab, we selected the J48 decision tree algorithm and used 10-fold cross-validation for testing. We analyzed the output using performance measures such as accuracy, precision, recall, F-measure, and confusion matrix. This practical helped in understanding feature selection techniques and classification methods used in machine learning and data mining.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
