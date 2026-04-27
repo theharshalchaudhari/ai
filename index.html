@@ -150,26 +150,45 @@ Shift + 0 → AiCodes.txt
 
         /* Shift + 9 = (  → AI Chat Mode */
         if (key === "(") {
-            aiMode = true;
+    aiMode = true;
 
-            editor.innerText =
-`AI Chat Mode
+    editor.innerText = "AI Chat Mode\n\nType your question below and press Enter";
+    window.scrollTo(0, 0);
 
-Type your question below and press Enter
+    /* place cursor at end */
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(editor);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
 
-Example:
-Explain A* Search`;
+    return;
+}
 
-            window.scrollTo(0, 0);
-            return;
-        }
+/* remove placeholder as soon as user starts typing */
+editor.addEventListener("input", function () {
+    if (
+        aiMode &&
+        editor.innerText.trim() === "AI Chat Mode\n\nType your question below and press Enter"
+    ) {
+        editor.innerText = "";
+
+        const range = document.createRange();
+        const sel = window.getSelection();
+        range.selectNodeContents(editor);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    }
+});
 
         /* Enter sends AI prompt only in AI mode */
         if (key === "Enter" && aiMode) {
             event.preventDefault();
 
             const prompt = editor.innerText
-                .replace("AI Chat Mode", "")
+                .replace("Chat Mode", "")
                 .replace("Type your question below and press Enter", "")
                 .replace("Example:\nExplain A* Search", "")
                 .trim();
